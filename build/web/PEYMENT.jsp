@@ -35,7 +35,7 @@
             <tr>
                  
                 <td>
-                    <%=msg.getCustomerName() %>
+                    <%=msg.getCustomerID() %>
                 </td>   
                 <td>
                     <%=msg.getBalance() %>
