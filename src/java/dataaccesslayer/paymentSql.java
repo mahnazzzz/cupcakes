@@ -66,6 +66,26 @@ public class paymentSql {
         }
        return inv;
     }
+    public void setNySaldo(double nyvalue, int customerId) {
+        PreparedStatement pst;
+        ArrayList<paymant> inv= new ArrayList<>();
+        try {
+            con = Connector.getCon();
+            pst = con.prepareStatement("UPDATE betalinger SET customer_account='" + customerId + "'+WHERE CustomerID='" + customerId + "';");
+            try {
+                ResultSet resultSet = pst.executeQuery();
+                while (resultSet.next()) {
+                  
+                }
+               
+            } catch (SQLException es) {
+                es.printStackTrace();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+      
+    }
 
     public String viseInvoic() {
         return "";

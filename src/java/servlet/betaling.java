@@ -29,7 +29,7 @@ public class betaling extends HttpServlet {
 
           dataaccesslayer.invoiceSql isql = new invoiceSql();
         dataaccesslayer.UserSql usq= new UserSql();
-          paymentSql pay = new paymentSql();
+         dataaccesslayer.paymentSql pay = new paymentSql();
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,8 +60,9 @@ public class betaling extends HttpServlet {
              sum += invoice1.getTotalPrice();
         }
           double nowBalance = balance -sum;
-          u.setBalance(nowBalance);
+          
           pay.addEnPayment(custom, nowBalance, sum);
+          pay.setNySaldo(nowBalance, custom);
           ArrayList<paymant> payList =pay.getBetalint(custom);
           request.setAttribute("oversigt", payList);
         getServletContext().getRequestDispatcher("/PEYMENT.jsp").forward(request, response);
